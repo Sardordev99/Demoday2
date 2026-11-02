@@ -1,0 +1,1527 @@
+/* ==========================================
+   TUTORHUB — MODERN DESIGN SYSTEM
+   Version 2.0
+========================================== */
+
+/* ---------- 1. ОСНОВНЫЕ НАСТРОЙКИ ---------- */
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --primary-light: #818cf8;
+    --secondary: #8b5cf6;
+    --accent: #06b6d4;
+
+    --background: #f8fafc;
+    --background-soft: #f1f5f9;
+    --card: #ffffff;
+
+    --text: #172033;
+    --text-secondary: #64748b;
+    --border: #e2e8f0;
+
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+
+    --radius-small: 10px;
+    --radius: 16px;
+    --radius-large: 24px;
+
+    --container: 1200px;
+
+    --shadow-small: 0 4px 12px rgba(15, 23, 42, 0.05);
+    --shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+    --shadow-large: 0 20px 50px rgba(15, 23, 42, 0.12);
+
+    --transition: 0.25s ease;
+}
+
+/* ---------- 2. СБРОС СТИЛЕЙ ---------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+
+    color: var(--text);
+    background: var(--background);
+
+    transition:
+        color var(--transition),
+        background var(--transition);
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+    font-size: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button,
+input,
+select,
+textarea {
+    outline-color: var(--primary);
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+
+    transition:
+        color var(--transition),
+        opacity var(--transition);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    line-height: 1.2;
+    color: var(--text);
+}
+
+p {
+    margin-top: 0;
+}
+
+ul,
+ol {
+    padding-left: 24px;
+}
+
+::selection {
+    color: #ffffff;
+    background: var(--primary);
+}
+
+/* ---------- 3. ОБЩИЕ КОНТЕЙНЕРЫ ---------- */
+
+.container,
+.page-container,
+.main-container {
+    width: min(92%, var(--container));
+    margin-right: auto;
+    margin-left: auto;
+}
+
+main {
+    min-height: 60vh;
+}
+
+.page-content {
+    width: min(92%, var(--container));
+    margin: 40px auto;
+}
+
+section {
+    position: relative;
+}
+
+.section {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.section-title {
+    margin-bottom: 15px;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.section-description {
+    max-width: 680px;
+    margin-bottom: 35px;
+    color: var(--text-secondary);
+    font-size: 17px;
+}
+
+/* ---------- 4. ШАПКА САЙТА ---------- */
+
+.site-header,
+header.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    width: 100%;
+
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+
+    transition:
+        background var(--transition),
+        border-color var(--transition);
+}
+
+.header-container,
+.header-inner,
+.nav-container {
+    width: min(92%, var(--container));
+    min-height: 76px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.logo,
+.site-logo,
+.logo a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--text);
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span,
+.site-logo span {
+    color: var(--primary);
+}
+
+.logo img,
+.site-logo img {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+}
+
+nav,
+.navigation,
+#navigation {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav a,
+.navigation a,
+#navigation a {
+    position: relative;
+
+    padding: 8px 0;
+
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+nav a:hover,
+.navigation a:hover,
+#navigation a:hover,
+nav a.active,
+.navigation a.active,
+#navigation a.active {
+    color: var(--primary);
+}
+
+nav a::after,
+.navigation a::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    height: 2px;
+
+    background: var(--primary);
+
+    content: "";
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: transform var(--transition);
+}
+
+nav a:hover::after,
+.navigation a:hover::after {
+    transform: scaleX(1);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#menuToggle {
+    display: none;
+}
+
+#languageSelect {
+    min-height: 40px;
+    padding: 8px 12px;
+
+    color: var(--text);
+    background: var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-small);
+}
+
+#themeToggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    color: var(--text);
+    background: var(--background-soft);
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    transition:
+        background var(--transition),
+        transform var(--transition);
+}
+
+#themeToggle:hover {
+    background: var(--border);
+    transform: rotate(8deg);
+}
+
+/* ---------- 5. КНОПКИ ---------- */
+
+.btn,
+.button,
+button.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 46px;
+    padding: 12px 22px;
+
+    color: #ffffff;
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    border: none;
+    border-radius: 12px;
+
+    font-weight: 700;
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        opacity var(--transition);
+}
+
+.btn:hover,
+.button:hover,
+button.btn:hover {
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(99, 102, 241, 0.25);
+}
+
+.btn:active,
+.button:active {
+    transform: scale(0.97);
+}
+
+.btn-secondary {
+    color: var(--primary);
+    background: var(--background-soft);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    color: var(--primary-dark);
+    background: var(--border);
+    box-shadow: none;
+}
+
+.btn-outline {
+    color: var(--primary);
+    background: transparent;
+    border: 1px solid var(--primary);
+}
+
+.btn-outline:hover {
+    color: #ffffff;
+    background: var(--primary);
+}
+
+/* ---------- 6. ГЛАВНЫЙ ЭКРАН ---------- */
+
+.hero {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+
+    min-height: 540px;
+    padding: 80px 0;
+
+    overflow: hidden;
+}
+
+.hero-content {
+    flex: 1;
+    animation: slideInLeft 0.7s ease both;
+}
+
+.hero h1 {
+    margin-bottom: 25px;
+
+    font-size: clamp(38px, 5vw, 64px);
+    font-weight: 850;
+    letter-spacing: -2px;
+    line-height: 1.12;
+}
+
+.hero h1 span,
+.gradient-text {
+    color: var(--primary);
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary),
+        var(--accent)
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    max-width: 600px;
+    margin-bottom: 30px;
+
+    color: var(--text-secondary);
+    font-size: 18px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.hero-image,
+.hero-visual {
+    flex: 1;
+    min-width: 0;
+
+    animation: slideInRight 0.8s ease both;
+}
+
+.hero-image img,
+.hero-visual img {
+    width: 100%;
+    border-radius: var(--radius-large);
+}
+
+/* ---------- 7. СТАТИСТИКА ---------- */
+
+.stats,
+.stats-grid,
+.statistics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.stat-card,
+.stat-item,
+.statistics-card {
+    padding: 25px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    text-align: center;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.stat-card:hover,
+.stat-item:hover,
+.statistics-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.stat-card h3,
+.stat-item h3,
+.statistics-card h3 {
+    margin-bottom: 8px;
+    color: var(--primary);
+    font-size: 32px;
+}
+
+.stat-card p,
+.stat-item p,
+.statistics-card p {
+    margin-bottom: 0;
+    color: var(--text-secondary);
+}
+
+/* ---------- 8. КАРТОЧКИ ---------- */
+
+.cards,
+.features-grid,
+.subjects-grid,
+.pricing-grid,
+.tutor-grid,
+.tutors-grid,
+#tutorGrid,
+#featuredTutorGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.card,
+.feature-card,
+.subject-card,
+.pricing-card,
+.tutor-card,
+.tutor-item {
+    min-width: 0;
+    padding: 25px;
+
+    color: var(--text);
+    background: var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow-small);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.card:hover,
+.feature-card:hover,
+.subject-card:hover,
+.pricing-card:hover,
+.tutor-card:hover,
+.tutor-item:hover {
+    transform: translateY(-6px);
+    border-color: #c7d2fe;
+    box-shadow: var(--shadow);
+}
+
+.card h3,
+.feature-card h3,
+.subject-card h3,
+.pricing-card h3,
+.tutor-card h3,
+.tutor-item h3 {
+    margin-bottom: 12px;
+    font-size: 21px;
+}
+
+.card p,
+.feature-card p,
+.subject-card p,
+.pricing-card p,
+.tutor-card p,
+.tutor-item p {
+    color: var(--text-secondary);
+}
+
+.card img,
+.feature-card img,
+.subject-card img {
+    margin-bottom: 18px;
+    border-radius: 12px;
+}
+
+/* ---------- 9. ПОИСК И ФИЛЬТРЫ ---------- */
+
+#searchInput,
+#subjectFilter,
+#formatFilter,
+#maxPrice {
+    min-height: 48px;
+    padding: 12px 15px;
+
+    color: var(--text);
+    background: var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    font-size: 15px;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+}
+
+#searchInput {
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+#searchInput::placeholder,
+#maxPrice::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.85;
+}
+
+#subjectFilter,
+#formatFilter,
+#maxPrice {
+    max-width: 100%;
+    margin: 0 8px 16px 0;
+}
+
+#searchInput:hover,
+#subjectFilter:hover,
+#formatFilter:hover,
+#maxPrice:hover {
+    border-color: var(--primary-light);
+}
+
+#searchInput:focus,
+#subjectFilter:focus,
+#formatFilter:focus,
+#maxPrice:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+    outline: none;
+}
+
+#resetFilters {
+    min-height: 48px;
+    padding: 12px 20px;
+    margin-bottom: 16px;
+
+    color: #ffffff;
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    border: none;
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+#resetFilters:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.22);
+}
+
+#resetFilters:active {
+    transform: scale(0.97);
+}
+
+#resultCount {
+    margin: 8px 0 25px;
+
+    color: var(--text-secondary);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* ---------- 10. КАРТОЧКИ РЕПЕТИТОРОВ ---------- */
+
+#tutorGrid,
+#featuredTutorGrid {
+    margin-top: 25px;
+}
+
+#tutorGrid > *,
+#featuredTutorGrid > * {
+    min-width: 0;
+    animation: tutorAppear 0.45s ease both;
+}
+
+.tutor-card img,
+.tutor-item img {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 18px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+.tutor-card .price,
+.tutor-item .price {
+    color: var(--primary);
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.tutor-card .rating,
+.tutor-item .rating {
+    color: var(--warning);
+    font-weight: 700;
+}
+
+.tutor-card .verified,
+.tutor-item .verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 5px 10px;
+
+    color: #047857;
+    background: #d1fae5;
+
+    border-radius: 30px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.tutor-card button,
+.tutor-item button {
+    max-width: 100%;
+}
+
+/* ---------- 11. ТАРИФЫ ---------- */
+
+.pricing-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card .price {
+    margin: 15px 0;
+
+    color: var(--primary);
+    font-size: 34px;
+    font-weight: 850;
+}
+
+.pricing-card ul {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.pricing-card li {
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+}
+
+.pricing-card .btn {
+    margin-top: 20px;
+}
+
+.pricing-card.featured,
+.pricing-card.popular {
+    border: 2px solid var(--primary);
+    box-shadow: 0 15px 40px rgba(99, 102, 241, 0.12);
+}
+
+.popular-label,
+.plan-badge {
+    display: inline-block;
+    align-self: flex-start;
+
+    padding: 6px 12px;
+
+    color: #ffffff;
+    background: var(--primary);
+
+    border-radius: 30px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* ---------- 12. ФОРМЫ ---------- */
+
+form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label,
+form label {
+    display: block;
+    margin-bottom: 8px;
+
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+form input,
+form select,
+form textarea,
+.form-control {
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 14px;
+
+    color: var(--text);
+    background: var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+form textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus,
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    outline: none;
+}
+
+form input[type="checkbox"],
+form input[type="radio"] {
+    width: auto;
+    min-height: auto;
+}
+
+form button[type="submit"] {
+    width: 100%;
+}
+
+/* ---------- 13. МОДАЛЬНЫЕ ОКНА ---------- */
+
+.booking-modal,
+.modal,
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(6px);
+}
+
+.booking-modal.active,
+.modal.active,
+.modal-overlay.active {
+    display: flex;
+    animation: fadeIn 0.25s ease both;
+}
+
+.booking-modal-content,
+.modal-content,
+.modal-dialog {
+    position: relative;
+
+    width: 100%;
+    max-width: 520px;
+    max-height: 90vh;
+
+    padding: 30px;
+
+    overflow-y: auto;
+
+    color: var(--text);
+    background: var(--card);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow-large);
+
+    animation: modalAppear 0.3s ease both;
+}
+
+.modal-close,
+.booking-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    color: var(--text-secondary);
+    background: var(--background-soft);
+
+    border: none;
+    border-radius: 50%;
+
+    font-size: 22px;
+}
+
+.modal-close:hover,
+.booking-modal-close:hover {
+    color: var(--danger);
+}
+
+/* ---------- 14. FAQ ---------- */
+
+.faq-list {
+    display: grid;
+    gap: 15px;
+}
+
+.faq-item,
+details {
+    padding: 20px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.faq-item h3 {
+    margin-bottom: 10px;
+}
+
+details summary {
+    color: var(--text);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+details p {
+    margin: 15px 0 0;
+    color: var(--text-secondary);
+}
+
+/* ---------- 15. ОТЗЫВЫ ---------- */
+
+.reviews-grid,
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.review-card,
+.testimonial-card {
+    padding: 24px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow-small);
+}
+
+.review-card p,
+.testimonial-card p {
+    color: var(--text-secondary);
+}
+
+.review-stars {
+    color: var(--warning);
+    letter-spacing: 2px;
+}
+
+/* ---------- 16. О НАС И КОНТАКТЫ ---------- */
+
+.about-content,
+.contact-content {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 35px;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: var(--radius-large);
+}
+
+.contact-card,
+.contact-info {
+    padding: 25px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+/* ---------- 17. АДМИН-ПАНЕЛЬ ---------- */
+
+.admin-container,
+.admin-content {
+    width: min(94%, 1400px);
+    margin: 35px auto;
+}
+
+.admin-stats,
+.admin-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.admin-card,
+.admin-stat-card {
+    padding: 24px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow-small);
+}
+
+.admin-card h3,
+.admin-stat-card h3 {
+    margin-bottom: 12px;
+}
+
+.admin-card .number,
+.admin-stat-card .number {
+    color: var(--primary);
+    font-size: 30px;
+    font-weight: 800;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 12px;
+}
+
+th,
+td {
+    padding: 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+}
+
+th {
+    color: var(--text);
+    background: var(--background-soft);
+}
+
+td {
+    color: var(--text-secondary);
+}
+
+/* ---------- 18. ФУТЕР ---------- */
+
+.site-footer,
+footer.site-footer {
+    margin-top: 70px;
+    padding: 45px 0 20px;
+
+    color: var(--text-secondary);
+    background: var(--card);
+
+    border-top: 1px solid var(--border);
+}
+
+.footer-container,
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 35px;
+
+    width: min(92%, var(--container));
+    margin: 0 auto;
+}
+
+.footer-column h3,
+.footer-column h4 {
+    margin-bottom: 15px;
+    color: var(--text);
+}
+
+.footer-column a {
+    display: block;
+    width: fit-content;
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+}
+
+.footer-column a:hover {
+    color: var(--primary);
+}
+
+.footer-bottom {
+    width: min(92%, var(--container));
+    margin: 30px auto 0;
+    padding-top: 20px;
+
+    border-top: 1px solid var(--border);
+
+    text-align: center;
+    font-size: 14px;
+}
+
+/* ---------- 19. ТЁМНАЯ ТЕМА ---------- */
+
+/* Поддерживаются несколько вариантов класса темы */
+
+body.dark-mode,
+body.dark,
+body[data-theme="dark"] {
+    --background: #0b1120;
+    --background-soft: #151e30;
+    --card: #111a2b;
+
+    --text: #f1f5f9;
+    --text-secondary: #a5b4c8;
+    --border: #293449;
+
+    --shadow-small: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    --shadow-large: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .verified,
+body.dark .verified,
+body[data-theme="dark"] .verified {
+    color: #a7f3d0;
+    background: #064e3b;
+}
+
+body.dark-mode .popular-label,
+body.dark .popular-label,
+body[data-theme="dark"] .popular-label {
+    color: #ffffff;
+}
+
+/* ---------- 20. АНИМАЦИИ ---------- */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes tutorAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes floating {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.floating {
+    animation: floating 4s ease-in-out infinite;
+}
+
+/* ---------- 21. АДАПТАЦИЯ: ПЛАНШЕТЫ ---------- */
+
+@media (max-width: 1000px) {
+    .header-container,
+    .header-inner,
+    .nav-container {
+        gap: 15px;
+    }
+
+    nav,
+    .navigation,
+    #navigation {
+        gap: 15px;
+    }
+
+    .cards,
+    .features-grid,
+    .subjects-grid,
+    .pricing-grid,
+    .tutor-grid,
+    .tutors-grid,
+    #tutorGrid,
+    #featuredTutorGrid,
+    .reviews-grid,
+    .testimonials-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stats,
+    .stats-grid,
+    .statistics,
+    .admin-stats,
+    .admin-stat-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero {
+        gap: 30px;
+    }
+
+    .hero h1 {
+        font-size: clamp(34px, 5vw, 48px);
+    }
+}
+
+/* ---------- 22. АДАПТАЦИЯ: ТЕЛЕФОНЫ ---------- */
+
+@media (max-width: 700px) {
+    .header-container,
+    .header-inner,
+    .nav-container {
+        min-height: 68px;
+    }
+
+    .logo,
+    .site-logo,
+    .logo a {
+        font-size: 21px;
+    }
+
+    .logo img,
+    .site-logo img {
+        width: 36px;
+        height: 36px;
+    }
+
+    #menuToggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 42px;
+        height: 42px;
+
+        color: var(--text);
+        background: var(--background-soft);
+
+        border: 1px solid var(--border);
+        border-radius: 10px;
+    }
+
+    nav,
+    .navigation,
+    #navigation {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+
+        padding: 15px 5% 20px;
+
+        background: var(--card);
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow);
+    }
+
+    nav.open,
+    .navigation.open,
+    #navigation.open,
+    nav.active,
+    .navigation.active,
+    #navigation.active {
+        display: flex;
+    }
+
+    nav a,
+    .navigation a,
+    #navigation a {
+        padding: 12px 0;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 30px;
+
+        min-height: auto;
+        padding: 55px 0;
+    }
+
+    .hero h1 {
+        font-size: clamp(34px, 9vw, 46px);
+        letter-spacing: -1px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .hero-image,
+    .hero-visual {
+        width: 100%;
+    }
+
+    .section {
+        padding-top: 45px;
+        padding-bottom: 45px;
+    }
+
+    .section-title {
+        font-size: 30px;
+    }
+
+    .page-content {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    .cards,
+    .features-grid,
+    .subjects-grid,
+    .pricing-grid,
+    .tutor-grid,
+    .tutors-grid,
+    #tutorGrid,
+    #featuredTutorGrid,
+    .reviews-grid,
+    .testimonials-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .stats,
+    .stats-grid,
+    .statistics,
+    .admin-stats,
+    .admin-stat-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    #searchInput {
+        width: 100%;
+    }
+
+    #subjectFilter,
+    #formatFilter,
+    #maxPrice {
+        display: block;
+        width: 100%;
+        margin: 0 0 12px;
+    }
+
+    #resetFilters {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    .about-content,
+    .contact-content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .footer-container,
+    .footer-content {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+    }
+
+    .booking-modal-content,
+    .modal-content,
+    .modal-dialog {
+        padding: 25px 20px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    th,
+    td {
+        padding: 10px 8px;
+    }
+}
+
+/* ---------- 23. МАЛЕНЬКИЕ ТЕЛЕФОНЫ ---------- */
+
+@media (max-width: 380px) {
+    .container,
+    .page-container,
+    .main-container,
+    .page-content {
+        width: 94%;
+    }
+
+    .stats,
+    .stats-grid,
+    .statistics,
+    .admin-stats,
+    .admin-stat-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .btn,
+    .hero-buttons .button {
+        width: 100%;
+    }
+
+    .card,
+    .feature-card,
+    .subject-card,
+    .pricing-card,
+    .tutor-card,
+    .tutor-item {
+        padding: 20px;
+    }
+}
+
+/* ---------- 24. УМЕНЬШЕНИЕ АНИМАЦИЙ ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+

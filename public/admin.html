@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админ-панель — TutorHub</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="logo">Tutor<span>Hub</span></a>
+    <nav class="main-nav">
+      <a href="index.html">Главная</a>
+      <a href="tutors.html">Репетиторы</a>
+      <a href="about.html">О нас</a>
+      <a href="pricing.html">Тарифы</a>
+      <a href="contact.html">Контакты</a>
+    </nav>
+  </header>
+
+  <main class="page-content">
+    <section class="page-hero">
+      <span class="eyebrow">Только для администратора</span>
+      <h1>Панель управления</h1>
+      <p>Войди, чтобы просмотреть статистику сайта.</p>
+    </section>
+
+    <section class="page-panel admin-panel">
+      <form id="adminLoginForm">
+        <label for="adminCode">Секретный код</label>
+        <input id="adminCode" type="password" required
+          placeholder="Введи код администратора">
+        <button class="primary-link" type="submit">Войти</button>
+        <p id="adminStatus" role="status"></p>
+      </form>
+
+      <div id="adminStats" hidden>
+        <h2>Статистика посещений</h2>
+        <pre id="statsOutput">Загрузка...</pre>
+        <button id="adminLogout" class="primary-link" type="button">
+          Выйти
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 TutorHub</p>
+  </footer>
+
+  <script>
+    const loginForm = document.getElementById("adminLoginForm");
+    const adminStatus = document.getElementById("adminStatus");
+    const adminStats = document.getElementById("adminStats");
+    const statsOutput = document.getElementById("statsOutput");
+
+    async function loadStats() {
+      const response = await fetch("/api/admin/stats");
+
+      if (!response.ok) {
+        throw new Error("Не удалось получить статистику");
+      }
+
+      const data = await response.json();
+      statsOutput.textContent = JSON.stringify(data, null, 2);
+      adminStats.hidden = false;
+      loginForm.hidden = true;
+    }
+
+    loginForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      adminStatus.textContent = "Проверяем код...";
+
+      try {
+        const response = await fetch("/api/admin/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            code: document.getElementById("adminCode").value
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error("Неверный код или ошибка сервера");
+        }
+
+        await loadStats();
+      } catch (error) {
+        adminStatus.textContent = error.message;
+      }
+    });
+
+    document.getElementById("adminLogout").addEventListener("click", async () => {
+      await fetch("/api/admin/logout", { method: "POST" });
+      adminStats.hidden = true;
+      loginForm.hidden = false;
+      document.getElementById("adminCode").value = "";
+      adminStatus.textContent = "Ты вышел из админ-панели.";
+    });
+  </script>
+</body>
+</html>

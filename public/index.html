@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="TutorHub — найди своего репетитора. Изучай математику, английский, программирование и другие предметы.">
+
+    <title>TutorHub — Найди своего репетитора</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-inner">
+
+            <a href="index.html" class="logo">
+                Tutor<span>Hub</span><span class="logo-dot">.</span>
+            </a>
+
+            <nav class="navigation" id="navigation">
+                <a href="index.html" class="nav-link active" data-i18n="navHome">Главная</a>
+                <a href="tutors.html" class="nav-link" data-i18n="navTutors">Репетиторы</a>
+                <a href="about.html" class="nav-link" data-i18n="navAbout">О нас</a>
+                <a href="pricing.html" class="nav-link" data-i18n="navPricing">Тарифы</a>
+                <a href="contact.html" class="nav-link" data-i18n="navContact">Контакты</a>
+            </nav>
+
+            <div class="header-actions">
+
+                <select id="languageSelect" class="language-select" aria-label="Выбрать язык">
+                    <option value="ru">🇷🇺 RU</option>
+                    <option value="uz">🇺🇿 UZ</option>
+                    <option value="en">🇬🇧 EN</option>
+                </select>
+
+                <button
+                    id="themeToggle"
+                    class="theme-toggle"
+                    type="button"
+                    aria-label="Переключить тему"
+                >
+                    🌙
+                </button>
+
+                <a href="tutors.html" class="button button-small" data-i18n="findTutor">
+                    Найти репетитора
+                </a>
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Открыть меню"
+                    aria-expanded="false"
+                >
+                    ☰
+                </button>
+
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="container hero-grid">
+
+                <div class="hero-content reveal">
+
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        <span data-i18n="heroBadge">Обучение начинается здесь</span>
+                    </div>
+
+                    <h1 data-i18n="heroTitle">
+                        Твой путь к знаниям начинается с
+                        <span class="gradient-text">правильного учителя.</span>
+                    </h1>
+
+                    <p class="hero-description" data-i18n="heroDescription">
+                        Находи лучших репетиторов, изучай любимые предметы
+                        и достигай своих целей вместе с TutorHub.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="tutors.html" class="button" data-i18n="heroButton">
+                            Найти преподавателя →
+                        </a>
+
+                        <a href="#subjects" class="button button-outline" data-i18n="exploreSubjects">
+                            Изучить предметы
+                        </a>
+                    </div>
+
+                    <div class="hero-social-proof">
+
+                        <div class="avatar-stack">
+                            <span>👩🏻</span>
+                            <span>👨🏻</span>
+                            <span>👩🏽</span>
+                            <span>👨🏽</span>
+                        </div>
+
+                        <div>
+                            <strong>200+</strong>
+                            <p data-i18n="heroTutors">демонстрационных профилей</p>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="hero-visual reveal">
+
+                    <div class="hero-glow"></div>
+
+                    <div class="floating-card floating-card-top">
+                        <span class="floating-icon">✨</span>
+                        <div>
+                            <strong data-i18n="heroProgress">Твой прогресс</strong>
+                            <p data-i18n="heroProgressText">Новые знания каждый день</p>
+                        </div>
+                    </div>
+
+                    <div class="hero-illustration">
+                        <div class="illustration-circle"></div>
+
+                        <div class="book book-one">📚</div>
+                        <div class="book book-two">💻</div>
+                        <div class="book book-three">🎓</div>
+
+                        <div class="study-card">
+                            <div class="study-card-icon">🧑‍🏫</div>
+                            <h3 data-i18n="studyCardTitle">Учись у лучших</h3>
+                            <p data-i18n="studyCardText">В своём темпе и формате</p>
+
+                            <div class="study-progress">
+                                <span></span>
+                            </div>
+
+                            <small data-i18n="studyProgressText">Твой путь к успеху</small>
+                        </div>
+                    </div>
+
+                    <div class="floating-card floating-card-bottom">
+                        <span class="rating-star">★</span>
+                        <div>
+                            <strong>4.9/5</strong>
+                            <p data-i18n="heroRating">Средний рейтинг в демо</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- STATS -->
+        <section class="stats-section">
+            <div class="container stats-grid">
+
+                <div class="stat-item reveal">
+                    <strong>200+</strong>
+                    <span data-i18n="statTutors">профилей репетиторов</span>
+                </div>
+
+                <div class="stat-item reveal">
+                    <strong>10</strong>
+                    <span data-i18n="statSubjects">предметов</span>
+                </div>
+
+                <div class="stat-item reveal">
+                    <strong>3</strong>
+                    <span data-i18n="statLanguages">языка интерфейса</span>
+                </div>
+
+                <div class="stat-item reveal">
+                    <strong>24/7</strong>
+                    <span data-i18n="statAccess">доступ к сайту</span>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- SUBJECTS -->
+        <section class="section" id="subjects">
+            <div class="container">
+
+                <div class="section-heading reveal">
+                    <div>
+                        <span class="section-label" data-i18n="subjectsLabel">ЧТО ТЫ ХОЧЕШЬ ИЗУЧАТЬ?</span>
+                        <h2 data-i18n="subjectsTitle">Найди свой предмет</h2>
+                        <p data-i18n="subjectsDescription">
+                            Выбирай направление и находи подходящего преподавателя.
+                        </p>
+                    </div>
+
+                    <a href="tutors.html" class="text-link" data-i18n="allSubjects">
+                        Все предметы →
+                    </a>
+                </div>
+
+
+                <div class="subjects-grid">
+
+                    <a href="tutors.html?subject=Математика" class="subject-card reveal">
+                        <div class="subject-icon icon-purple">📐</div>
+                        <h3 data-i18n="subjectMath">Математика</h3>
+                        <p data-subject-count="Математика">20 преподавателей</p>
+                        <span class="subject-arrow">↗</span>
+                    </a>
+
+                    <a href="tutors.html?subject=Английский" class="subject-card reveal">
+                        <div class="subject-icon icon-blue">🌍</div>
+                        <h3 data-i18n="subjectEnglish">Английский язык</h3>
+                        <p data-subject-count="Английский">20 преподавателей</p>
+                        <span class="subject-arrow">↗</span>
+                    </a>
+
+                    <a href="tutors.html?subject=Физика" class="subject-card reveal">
+                        <div class="subject-icon icon-orange">⚛️</div>
+                        <h3 data-i18n="subjectPhysics">Физика</h3>
+                        <p data-subject-count="Физика">20 преподавателей</p>
+                        <span class="subject-arrow">↗</span>
+                    </a>
+
+                    <a href="tutors.html?subject=Химия" class="subject-card reveal">
+                        <div class="subject-icon icon-green">🧪</div>
+                        <h3 data-i18n="subjectChemistry">Химия</h3>
+                        <p data-subject-count="Химия">20 преподавателей</p>
+                        <span class="subject-arrow">↗</span>
+                    </a>
+
+                    <a href="tutors.html?subject=Биология" class="subject-card reveal">
+                        <div class="subject-icon icon-pink">🧬</div>
+                        <h3 data-i18n="subjectBiology">Биология</h3>
+                        <p data-subject-count="Биология">20 преподавателей</p>
+                        <span class="subject-arrow">↗</span>
+                    </a>
+
+                    <a href="tutors.html?subject=Программирование" class="subject-card reveal">
+                        <div class="subject-icon icon-dark">💻</div>
+                        <h3 data-i18n="subjectProgramming">Программирование</h3>
+                        <p data-subject-count="Программирование">20 преподавателей</p>
+                        <span class="subject-arrow">↗</span>
+                    </a>
+
+                    <a href="tutors.html?subject=История" class="subject-card reveal">
+                        <div class="subject-icon icon-yellow">🏛️</div>
+                        <h3 data-i18n="subjectHistory">История</h3>
+                        <p data-subject-count="История">20 преподавателей</p>
+                        <span class="subject-arrow">↗</span>
+                    </a>
+
+                    <a href="tutors.html?subject=Русский язык" class="subject-card reveal">
+                        <div class="subject-icon icon-red">📖</div>
+                        <h3 data-i18n="subjectRussian">Русский язык</h3>
+                        <p data-subject-count="Русский язык">20 преподавателей</p>
+                        <span class="subject-arrow">↗</span>
+                    </a>
+
+                    <a href="tutors.html?subject=IELTS" class="subject-card reveal">
+                        <div class="subject-icon icon-blue">🎯</div>
+                        <h3>IELTS</h3>
+                        <p data-subject-count="IELTS">20 преподавателей</p>
+                        <span class="subject-arrow">↗</span>
+                    </a>
+
+                    <a href="tutors.html?subject=Узбекский язык" class="subject-card reveal">
+                        <div class="subject-icon icon-green">🇺🇿</div>
+                        <h3 data-i18n="subjectUzbek">Узбекский язык</h3>
+                        <p data-subject-count="Узбекский язык">20 преподавателей</p>
+                        <span class="subject-arrow">↗</span>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- FEATURED TUTORS -->
+        <section class="section section-muted" id="featuredTutors">
+            <div class="container">
+
+                <div class="section-heading reveal">
+                    <div>
+                        <span class="section-label" data-i18n="tutorsLabel">ПРЕПОДАВАТЕЛИ</span>
+                        <h2 data-i18n="featuredTitle">Познакомься с репетиторами</h2>
+                        <p data-i18n="featuredDescription">
+                            Изучай профили и выбирай подходящего преподавателя.
+                        </p>
+                    </div>
+
+                    <a href="tutors.html" class="text-link" data-i18n="allTutors">
+                        Все репетиторы →
+                    </a>
+                </div>
+
+                <div class="tutor-grid" id="featuredTutorGrid">
+                    <div class="loading-message" data-i18n="loading">
+                        Загружаем преподавателей...
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- HOW IT WORKS -->
+        <section class="section">
+            <div class="container">
+
+                <div class="section-heading centered reveal">
+                    <span class="section-label" data-i18n="howLabel">ВСЁ ПРОСТО</span>
+                    <h2 data-i18n="howTitle">Начни учиться за три шага</h2>
+                    <p data-i18n="howDescription">
+                        Никаких сложностей — только твой путь к знаниям.
+                    </p>
+                </div>
+
+                <div class="steps-grid">
+
+                    <article class="step-card reveal">
+                        <div class="step-number">01</div>
+                        <div class="step-icon">🔎</div>
+                        <h3 data-i18n="stepOneTitle">Найди репетитора</h3>
+                        <p data-i18n="stepOneText">
+                            Выбери предмет, цену и формат занятий.
+                        </p>
+                    </article>
+
+                    <article class="step-card reveal">
+                        <div class="step-number">02</div>
+                        <div class="step-icon">👨‍🏫</div>
+                        <h3 data-i18n="stepTwoTitle">Изучи профиль</h3>
+                        <p data-i18n="stepTwoText">
+                            Посмотри опыт, рейтинг и информацию преподавателя.
+                        </p>
+                    </article>
+
+                    <article class="step-card reveal">
+                        <div class="step-number">03</div>
+                        <div class="step-icon">🚀</div>
+                        <h3 data-i18n="stepThreeTitle">Начни обучение</h3>
+                        <p data-i18n="stepThreeText">
+                            Отправь заявку и согласуй детали занятия.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-card reveal">
+
+                    <div class="cta-decoration decoration-one"></div>
+                    <div class="cta-decoration decoration-two"></div>
+
+                    <div class="cta-content">
+                        <span class="section-label" data-i18n="ctaLabel">ТВОЁ БУДУЩЕЕ НАЧИНАЕТСЯ СЕЙЧАС</span>
+
+                        <h2 data-i18n="ctaTitle">
+                            Готов открыть новые возможности?
+                        </h2>
+
+                        <p data-i18n="ctaDescription">
+                            Найди своего преподавателя и сделай первый шаг к цели.
+                        </p>
+
+                        <a href="tutors.html" class="button button-light" data-i18n="ctaButton">
+                            Найти репетитора →
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+                    <a href="index.html" class="logo footer-logo">
+                        Tutor<span>Hub</span><span class="logo-dot">.</span>
+                    </a>
+
+                    <p data-i18n="footerDescription">
+                        Находим путь к знаниям вместе.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h3 data-i18n="footerPlatform">Платформа</h3>
+                    <a href="index.html" data-i18n="navHome">Главная</a>
+                    <a href="tutors.html" data-i18n="navTutors">Репетиторы</a>
+                    <a href="about.html" data-i18n="navAbout">О нас</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3 data-i18n="footerInformation">Информация</h3>
+                    <a href="pricing.html" data-i18n="navPricing">Тарифы</a>
+                    <a href="contact.html" data-i18n="navContact">Контакты</a>
+                    <a href="admin.html">Admin</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3 data-i18n="footerLanguages">Языки</h3>
+                    <p>🇷🇺 Русский</p>
+                    <p>🇺🇿 O‘zbekcha</p>
+                    <p>🇬🇧 English</p>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 TutorHub. <span data-i18n="footerRights">Все права защищены.</span></p>
+                <p data-i18n="demoNotice">Демонстрационный проект</p>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>

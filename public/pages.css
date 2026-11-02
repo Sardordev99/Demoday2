@@ -1,0 +1,271 @@
+
+.page-content {
+  width: min(1120px, 92%);
+  margin: 0 auto;
+  padding: 65px 0;
+  min-height: 75vh;
+}
+
+.page-hero {
+  padding: 55px 0 40px;
+  text-align: center;
+  animation: pageEnter 0.7s ease both;
+}
+
+.page-hero h1 {
+  font-size: clamp(2rem, 5vw, 3.7rem);
+  line-height: 1.1;
+  margin: 18px 0;
+}
+
+.page-hero p {
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.8;
+  opacity: 0.78;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #8b5cf6;
+}
+
+.page-panel,
+.feature-card,
+.price-card {
+  padding: 28px;
+  border: 1px solid rgba(140, 120, 200, 0.2);
+  border-radius: 22px;
+  background: var(--card-bg, #ffffff);
+  color: var(--text-color, #202033);
+}
+
+.page-panel {
+  margin: 25px 0;
+}
+
+.feature-grid,
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin: 35px 0;
+}
+
+.feature-card,
+.price-card {
+  animation: pageEnter 0.7s ease both;
+}
+
+.feature-card:hover,
+.price-card:hover {
+  border-color: #8b5cf6;
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.filter-row input,
+.filter-row select,
+.page-panel input,
+.page-panel textarea,
+.page-panel select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #d9d5e5;
+  border-radius: 12px;
+  font: inherit;
+  margin: 8px 0 16px;
+}
+
+.filter-row > * {
+  flex: 1 1 180px;
+  min-width: 0;
+}
+
+.price {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin: 20px 0;
+}
+
+.price-card ul {
+  padding-left: 20px;
+  line-height: 2;
+  margin-bottom: 25px;
+}
+
+.featured {
+  border-color: #8b5cf6;
+}
+
+.primary-link {
+  display: inline-block;
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(120deg, #8b5cf6, #6366f1);
+  color: white;
+  font: inherit;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primary-link:hover {
+  filter: brightness(1.08);
+}
+
+.center {
+  text-align: center;
+}
+
+.notice {
+  line-height: 1.7;
+  opacity: 0.8;
+}
+
+.contact-panel,
+.admin-panel {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.contact-panel label,
+.admin-panel label {
+  display: block;
+  font-weight: 600;
+}
+
+.site-footer {
+  padding: 28px 5%;
+  text-align: center;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .feature-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-content {
+    padding: 30px 0;
+  }
+
+  .page-hero {
+    padding: 35px 0 25px;
+  }
+
+  .main-nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+
+/* ===== TUTORHUB HEADER ===== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 5%;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+  backdrop-filter: blur(16px);
+}
+
+.logo {
+  flex-shrink: 0;
+  color: #202033;
+  font-size: 27px;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: #8b5cf6;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.main-nav a {
+  position: relative;
+  padding: 10px 13px;
+  border-radius: 10px;
+  color: #55516a;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+
+.main-nav a:hover {
+  color: #7c3aed;
+  background: #f1ebff;
+}
+
+.main-nav a:focus-visible,
+.logo:focus-visible {
+  outline: 2px solid #8b5cf6;
+  outline-offset: 4px;
+}
+
+@media (max-width: 800px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 5%;
+  }
+
+  .main-nav {
+    justify-content: flex-start;
+    width: 100%;
+    gap: 5px;
+  }
+
+  .main-nav a {
+    padding: 9px 10px;
+    font-size: 13px;
+  }
+}
